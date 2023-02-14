@@ -43,7 +43,7 @@ clear: both;
 body {
   color: black;
   background: no-repeat;
-  background-image: url(fondo.avif);
+  background-image: url(fondo.avif); /* la imagen de fondo */
   background-size: cover;
   
 }
