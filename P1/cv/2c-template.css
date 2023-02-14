@@ -33,12 +33,25 @@ clear: both;
 }
 #c1 {
     background-color:rgb(255, 131, 94);
+    
 }
 
 #c2 {
     background-color:rgb(248, 175, 115);
 }
 
+body {
+  color: black;
+}
+h1 {
+  color: whitesmoke;
+}
+h2{
+  color:whitesmoke
+}
+h3 {
+  color: whitesmoke;
+}
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
