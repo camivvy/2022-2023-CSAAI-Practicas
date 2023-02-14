@@ -27,6 +27,10 @@ display: table;
 clear: both;
 }
 
+.foto {
+  width: 20%;
+  height: 20%;
+}
 #c1 {
     background-color:rgb(255, 131, 94);
 }
@@ -42,6 +46,7 @@ img {
     width: 100%;
     height: auto;
 }
+
 
 .iresponsive {
     padding: 0 6px;
