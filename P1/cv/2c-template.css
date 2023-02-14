@@ -42,6 +42,10 @@ clear: both;
 
 body {
   color: black;
+  background: no-repeat;
+  background-image: url(fondo.avif);
+  background-size: cover;
+  
 }
 h1 {
   color: orangered;
