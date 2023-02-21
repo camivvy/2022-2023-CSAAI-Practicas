@@ -2,7 +2,6 @@
     box-sizing: border-box;
   }
   
-
 /* Clear floats despues de las columnas para eliminar la superposición */
 .filla:after {
 content: "";
@@ -14,16 +13,12 @@ clear: both;
   width: 15%;
   height: 15%;
 }
-#c1 {
-    background-color:rgb(255, 131, 94);
-    
-}
-
 
 body {
+  background-color:rgb(255, 131, 94); 
   color: black;
-  background: no-repeat;
-  background-image: url(fondo.avif); /* la imagen de fondo */
+   background: no-repeat; 
+   background-image: url(fondo.avif); /* la imagen de fondo */
   background-size: cover;
   
 }
