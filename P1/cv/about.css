@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+  }
+  
+
+/* Clear floats despues de las columnas para eliminar la superposición */
+.filla:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.foto {
+  width: 15%;
+  height: 15%;
+}
+#c1 {
+    background-color:rgb(255, 131, 94);
+    
+}
+
+
+body {
+  color: black;
+  background: no-repeat;
+  background-image: url(fondo.avif); /* la imagen de fondo */
+  background-size: cover;
+  
+}
+h1 {
+  color: orangered;
+}
+h2{
+  color:whitesmoke
+}
+h3 {
+  color: whitesmoke;
+}
+/* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
+/* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+.iresponsive {
+    padding: 0 6px;
+    float: left;
+    width: 50%;
+  }
+
+/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
+/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
+
+@media screen and (max-width: 600px) {
+    .columna {
+      width: 100%;
+    }
+
+    .iresponsive {
+        width: 100%;
+    }
+}
+
+/* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
