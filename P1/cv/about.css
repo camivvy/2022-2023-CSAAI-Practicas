@@ -6,6 +6,15 @@
   width: 15%;
   height: 15%;
 }
+.columna {
+  padding: 10px;
+  min-height: 500px;
+  }
+
+#c1 {
+    background-color:rgb(255, 131, 94);
+    
+}  
 
 body {
   background-color:rgb(255, 131, 94); 
