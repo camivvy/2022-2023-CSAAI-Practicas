@@ -16,6 +16,8 @@ const counter = {
     gui.display.innerHTML = this.valor;
   }
 }
+// si queremos hacer una operacion con el display usamos el objeto gui q hemos declardo
+//gui.boton
 
 //-- Acciones: Ligar el botón al contador
 gui.boton.onclick = () => {
