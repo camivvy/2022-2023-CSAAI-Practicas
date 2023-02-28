@@ -16,6 +16,8 @@ boton.onclick = () => {
   //-- Incrementar contador
   cont += 1;
 
+  //-- Actualizar el display (Ejemplo 1)
+  // display.innerHTML = cont;
   //-- Actualizar el display
-  display.innerHTML = cont;
+  display.innerHTML += ' ' + cont;
 }
