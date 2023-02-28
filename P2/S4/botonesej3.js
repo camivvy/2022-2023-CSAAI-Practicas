@@ -8,7 +8,7 @@ const gui = {
   boton: document.getElementById("boton"),
 }
 
-//-- Objeto contador: Contiene el valor y el método para incrementarse
+//-- Objeto contador: Contiene el valor y el método para incrementarse (usamos el metodo en vez d hacerlo directamente como antes)
 const counter = {
   valor: 0,
   inc : function(value) {
