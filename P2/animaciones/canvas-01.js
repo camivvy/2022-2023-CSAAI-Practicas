@@ -21,6 +21,9 @@ ctx.beginPath();
   //-- Mostrar el relleno
   ctx.fill();
 
+  //-- Cambiar el tamaño de la línea del trazo
+  ctx.lineWidth = 4;
+
   //-- Mostrar el trazo del rectángulo
   ctx.stroke();
 ctx.closePath();
