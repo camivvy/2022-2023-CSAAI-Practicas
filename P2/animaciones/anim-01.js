@@ -13,6 +13,9 @@ const ctx = canvas.getContext("2d");
 let x = 0;
 let y = 0;
 
+//-- Velocidad horizontal del objeto
+let velx = 1;
+
 //-- Función principal de animación
 function update() 
 {
@@ -20,7 +23,8 @@ function update()
   //-- Algoritmo de animación:
   //-- 1) Actualizar posiciones de los elementos
   //-- Por hacer
-
+ //-- (física del movimiento rectilíneo uniforme)
+    x = x + velx;
   //-- 2) Borrar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
