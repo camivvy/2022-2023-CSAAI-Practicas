@@ -11,3 +11,8 @@ body {
   p {
     background-color: orange;
   }
+/* por identificador*/
+  #Diferente {
+    background-color: green;
+    color: white;
+  }
