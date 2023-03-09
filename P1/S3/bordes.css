@@ -1,8 +1,8 @@
 /* Ponemos a cero todas las propiedades del cuerpo */
 /* Sin marge, sin relleno y sin borde              */
 body {
-    padding: 20px;
-    margin: 0px;
+    padding: 0px;
+    margin: 50px;
     border: solid;
     border-color: palevioletred;
   }
@@ -12,7 +12,7 @@ body {
       para verlo. Y lo ponemos de color azul
   */
   p {
-    margin: 0px;
+    margin: 20px;
     padding:10px;
     border:solid;
     border-color:greenyellow;
