@@ -15,7 +15,7 @@ text1.oninput = () => {
     text1_disp.innerHTML = "Escribiendo..."
 }
 
-text1.onchange = () => {
+text1.onchange = () => { //si aki pusiesemos oninput va escribiendo loq escribimos a la vez
     text1_disp.innerHTML=text1.value;
 }
 
