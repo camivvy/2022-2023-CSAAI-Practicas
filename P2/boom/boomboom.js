@@ -1,38 +1,124 @@
 console.log("Ejecuitando JS...");
 
 //-- Elementos de la interfaz del juego
-/* display1 = document.getElementById("display1")
-display2 = document.getElementById("display2")
-display3 = document.getElementById("display3")
-display4 = document.getElementById("display4")
+var display1 = document.getElementById("display1")
+var display2 = document.getElementById("display2")
+var display3 = document.getElementById("display3")
+var display4 = document.getElementById("display4")
 
-boton1 = document.getElementById("boton1")
-boton2 = document.getElementById("boton2")
-boton3 = document.getElementById("boton3")
-boton4 = document.getElementById("boton4")
-boton5 = document.getElementById("boton5")
-boton6 = document.getElementById("boton6")
-boton7 = document.getElementById("boton7")
-boton8 = document.getElementById("boton8")
-boton9 = document.getElementById("boton9")
-boton0 = document.getElementById("boton0") */
-//Codigo secreto
-var codigo = "";
-var oculto = [];
-var intento = [];
-//Elemento html del codigo
-var hueco = document.getElementById("codigo");
 //Botones de numeros
-var buttons = document.getElementsByClassName("digito")
+const botones = document.getElementsByClassName("digito")
+function valores(value)
+{
+  console.log("Valor: " + value);
+}
+var secretcode=[];
+//secretcode = generarCodigo();
 
-//Escoge un codigo al azar
-//-- Generar números aleatorios con un valor máximo
-function getRandomInt() {
-    codigo = Math.floor(Math.random() * 9999);
-    console.log(codigo);
+const ESTADO = {
+    INIT: 0,
+    OP1: 1,
+}
+let estado = ESTADO.INIT; 
+function digito(ev)
+{
+    //-- Se ha recibido un dígito
+    //-- Según en qué estado se encuentre la calculadora
+    //-- se hará una cosa u otra
+
+    //-- Si es el primer dígito, no lo añadimos,
+    //-- sino que lo mostramos directamente en el display
+    if (estado == ESTADO.INIT) {
+        display1.innerHTML = "*";
+        display2.innerHTML = "*";
+        display3.innerHTML = "*";
+        display4.innerHTML = "*";
+     secretcode = generarCodigo();
+     console.log(secretcode); 
+     //asociar();
+
+    //-- Pasar al siguiente estado
+     estado = ESTADO.OP1;
+     crono.start();
+
+    } 
+    if(estado==ESTADO.OP1) {
+        comparar(ev);
+        console.log('11')
+    } 
+    
+}
+for (let boton of botones) {
+    //-- Establecer la funcion de llamada del boton i
+    //-- El parámetro ev.target contiene el boton
+    //-- que ha recibido el click
+      boton.onclick = digito;
+  }
+
+function comparar(ev){
+    for(i=0;i<secretcode.length;i++)
+    {  
+        //console.log(secretcode[i])
+        if(secretcode[0]==ev.target.value){
+            console.log('AQUI')
+            display1.innerHTML = ev.target.value;
+            
+        }
+        if(secretcode[1]==ev.target.value){
+            display2.innerHTML=ev.target.value
+            
+        }
+        if(secretcode[2]==ev.target.value){
+            display3.innerHTML=ev.target.value
+            
+        }
+        if(secretcode[3]==ev.target.value){
+            display4.innerHTML=ev.target.value
+        }
+    }
+
 }
 
-//Funcion pinta asteriscos
+//-------- Resto de funciones de retrollamada
+start.onclick = () => {
+    crono.start
+    estado = ESTADO.OP1;
+}
+stop.onclick = () => {
+    estado = ESTADO.OP1;
+  
+}
+reset.onclick = () => {
+  display1.innerHTML = "*";
+  display2.innerHTML = "*";
+  display3.innerHTML = "*";
+  display4.innerHTML = "*";
+
+  estado = ESTADO.INIT;
+}
+
+//Escoge un codigo al azar y lo guarda en un array
+function generarCodigo() {
+    let codigo = [];
+    for (let i = 0; i < 4; i++) {
+      codigo.push(Math.floor(Math.random() * 10));
+    }
+    return codigo;
+  }
+  
+  console.log(secretcode)
+ 
+//Asocia los sitios del array con el display
+  function asociar(){
+    display1 = secretcode[0]
+    display2 = secretcode[1]
+    display3 = secretcode[2]
+    display4 = secretcode[3]
+  }
+
+
+
+/*//Funcion pinta asteriscos
 function asteriscos() {
     for (var i = 0; i < 4; i++) {
         oculto[i] = "*"
@@ -81,7 +167,7 @@ function revisar(intento) {
 */
 
 
-//Revisar si hemos acabado
+/*//Revisar si hemos acabado
 function finished() {
     if(oculto.indexOf("*")== -1){
        
@@ -91,14 +177,13 @@ function finished() {
     } 
     crono.stop();
 } 
-
-function iniciar() {
+*/
+/* function iniciar() {
     getRandomInt();
-    asteriscos();
-    
+     
 }
 
-window.onload = iniciar();
+window.onload = iniciar(); */
 
 //-- Elementos de la gui
 const gui = {
@@ -107,8 +192,6 @@ const gui = {
     stop : document.getElementById("stop"),
     reset : document.getElementById("reset")
 }
-
-
 
 //-- Definir un objeto cronómetro
 const crono = new Crono(gui.display);
