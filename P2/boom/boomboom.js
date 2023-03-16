@@ -6,6 +6,8 @@ var display2 = document.getElementById("display2")
 var display3 = document.getElementById("display3")
 var display4 = document.getElementById("display4")
 
+//contador para aciertos
+var contador = 0;
 //Botones de numeros
 const botones = document.getElementsByClassName("digito")
 function valores(value)
@@ -35,8 +37,9 @@ function digito(ev)
         display4.innerHTML = "*";
      secretcode = generarCodigo();
      console.log(secretcode); 
+     contador=0;
      //asociar();
-
+    
     //-- Pasar al siguiente estado
      estado = ESTADO.OP1;
      crono.start();
@@ -45,7 +48,12 @@ function digito(ev)
     if(estado==ESTADO.OP1) {
         comparar(ev);
         console.log('11')
+        
     } 
+    if (contador == 4) {
+        crono.stop();
+
+    }
     
 }
 for (let boton of botones) {
@@ -56,45 +64,31 @@ for (let boton of botones) {
   }
 
 function comparar(ev){
-    for(i=0;i<secretcode.length;i++)
+    //for(i=0;i<secretcode.length;i++)
     {  
         //console.log(secretcode[i])
         if(secretcode[0]==ev.target.value){
             console.log('AQUI')
             display1.innerHTML = ev.target.value;
+            contador = contador +1;
             
         }
         if(secretcode[1]==ev.target.value){
             display2.innerHTML=ev.target.value
+            contador = contador +1;
             
         }
         if(secretcode[2]==ev.target.value){
             display3.innerHTML=ev.target.value
+            contador = contador +1;
             
         }
         if(secretcode[3]==ev.target.value){
             display4.innerHTML=ev.target.value
+            contador = contador +1;
         }
     }
 
-}
-
-//-------- Resto de funciones de retrollamada
-start.onclick = () => {
-    crono.start
-    estado = ESTADO.OP1;
-}
-stop.onclick = () => {
-    estado = ESTADO.OP1;
-  
-}
-reset.onclick = () => {
-  display1.innerHTML = "*";
-  display2.innerHTML = "*";
-  display3.innerHTML = "*";
-  display4.innerHTML = "*";
-
-  estado = ESTADO.INIT;
 }
 
 //Escoge un codigo al azar y lo guarda en un array
@@ -116,75 +110,6 @@ function generarCodigo() {
     display4 = secretcode[3]
   }
 
-
-
-/*//Funcion pinta asteriscos
-function asteriscos() {
-    for (var i = 0; i < 4; i++) {
-        oculto[i] = "*"
-    }
-    hueco.innerHTML = oculto.join("");
-}
-
-//Retroalimentacion botones de numeros
-function teclado() {
-    var buttons = "";
-    for (let boton of buttons) {
-
-        //-- Se ejecuta cuando se pulsa un boton
-        //-- que es un dígito. Para que el código sea 
-        //-- mas legible la función de retrollamada se
-        //-- escribe como una función normal (digito)
-        boton.onclick = buttons.innerHTML = intento.join("");
-    }
-    
-}
-
-function revisar(intento) {
-    for (i=0 ; i<4; i++) {
-        if (intento[i] == codigo[i]){
-            hueco.innerHTML = oculto.join("");
-        }
-    }
-}
- /* function teclado() {
-    var buttons = "";
-    document.getElementById("teclado").innerHTML = "";
- } */ 
-// Revisar si coincide
-/*
-  function intentos(digito) {
-    document.getElementById(digito).disabled = true;
-    if(codigo.indexOf(digito) != -1) {
-        for(var i=0; i<4; i++) {
-            if(codigo[i] == digito) oculto[i] = digito;
-        }
-        hueco.innerHTML = oculto.join("");
-    } 
-    finished();
-    //ns si hay q meter algo del cronometro aqui
-} 
-*/
-
-
-/*//Revisar si hemos acabado
-function finished() {
-    if(oculto.indexOf("*")== -1){
-       
-        for(var i = 0; i<buttons.length; i++){
-            buttons[i].disabled = true;
-        }
-    } 
-    crono.stop();
-} 
-*/
-/* function iniciar() {
-    getRandomInt();
-     
-}
-
-window.onload = iniciar(); */
-
 //-- Elementos de la gui
 const gui = {
     display : document.getElementById("display"),
@@ -202,16 +127,25 @@ const crono = new Crono(gui.display);
 gui.start.onclick = () => {
     console.log("Start!!");
     crono.start();
+    estado = ESTADO.OP1;
 }
   
 //-- Detener el cronómetro
 gui.stop.onclick = () => {
     console.log("Stop!");
     crono.stop();
+    estado = ESTADO.OP1;
+
 }
 
 //-- Reset del cronómetro
-gui.reset.onclick = () => {
+ gui.reset.onclick = () => {
     console.log("Reset!");
+    display1.innerHTML = "*";
+    display2.innerHTML = "*";
+    display3.innerHTML = "*";
+    display4.innerHTML = "*";
+
+  estado = ESTADO.INIT;
     crono.reset();
-}
+} 
