@@ -10,14 +10,20 @@
     <title>BOOM</title>
 </head>
 <body>
-    <p id="display">0:0:0</p>
+    <div class="todo">
+        <div>
+       <p id="display">0:0:0</p> 
+    </div>
     
+    <div class="contenedor">
     <p id="display1" class="codigo" >*</p>
     <p id="display2" class="codigo" >*</p>
     <p id="display3" class="codigo" >*</p>
     <p id="display4" class="codigo" >*</p>
+    </div>
    
-    
+   
+    <div id="botones">
     <button type="button" id="boton7" class="digito" value="7">7</button>
     <button type="button" id="boton8" class="digito" value="8">8</button>
     <button type="button" id="boton9" class="digito" value="9">9</button>
@@ -32,9 +38,13 @@
     <br>
     <button type="button" id="boton0" class="digito" value="0">0</button>
     <br>
-    <button type="button" onclick= iniciar() id="start">Start</button>
-    <button type="button" id="stop">Stop</button>
-    <button type="button" onclick= iniciar() id="reset">Reset</button>
+    <button class="acciones" type="button" onclick= iniciar() id="start">Start</button>
+    <button class="acciones" type="button" id="stop">Stop</button>
+    <button class="acciones" type="button" onclick= iniciar() id="reset">Reset</button> 
+    </div>
+    </div>
+    
+    
     
 
 

@@ -15,7 +15,7 @@ function valores(value)
   console.log("Valor: " + value);
 }
 var secretcode=[];
-//secretcode = generarCodigo();
+
 
 const ESTADO = {
     INIT: 0,
@@ -24,12 +24,7 @@ const ESTADO = {
 let estado = ESTADO.INIT; 
 function digito(ev)
 {
-    //-- Se ha recibido un dígito
-    //-- Según en qué estado se encuentre la calculadora
-    //-- se hará una cosa u otra
-
-    //-- Si es el primer dígito, no lo añadimos,
-    //-- sino que lo mostramos directamente en el display
+    //-- Al pulsar en un digito comienza 
     if (estado == ESTADO.INIT) {
         display1.innerHTML = "*";
         display2.innerHTML = "*";
@@ -38,7 +33,6 @@ function digito(ev)
      secretcode = generarCodigo();
      console.log(secretcode); 
      contador=0;
-     //asociar();
     
     //-- Pasar al siguiente estado
      estado = ESTADO.OP1;
@@ -64,28 +58,28 @@ for (let boton of botones) {
   }
 
 function comparar(ev){
-    //for(i=0;i<secretcode.length;i++)
     {  
-        //console.log(secretcode[i])
         if(secretcode[0]==ev.target.value){
-            console.log('AQUI')
             display1.innerHTML = ev.target.value;
             contador = contador +1;
-            
+            display1.classList.add("active") 
         }
         if(secretcode[1]==ev.target.value){
             display2.innerHTML=ev.target.value
             contador = contador +1;
+            display2.classList.add("active")
             
         }
         if(secretcode[2]==ev.target.value){
             display3.innerHTML=ev.target.value
             contador = contador +1;
+            display3.classList.add("active")
             
         }
         if(secretcode[3]==ev.target.value){
             display4.innerHTML=ev.target.value
             contador = contador +1;
+            display4.classList.add("active")
         }
     }
 
