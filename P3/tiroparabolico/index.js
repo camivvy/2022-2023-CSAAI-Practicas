@@ -32,6 +32,10 @@ const ctx = canvas.getContext("2d");
 let x = 5;
 let y = 345;
 
+// Dimensiones de los cubos
+let lx = 20;
+let ly = 20;
+
 //-- Velocidad del objeto a lanzar
 let velx = velocidad.value;
 //-- Angulo del objeto a lanzar
@@ -43,20 +47,52 @@ let g = 9.8
 let xo = 600;
 let yo = 345;
 
-// Pintar lo inicial 
-ctx.beginPath();
-    ctx.rect(x, y, 20, 20);
-    ctx.rect(xo,yo,20, 20);
+//-- función para pintar el proyectil
+function dibujarP(x,y,lx,ly,color) {
 
-    //-- Dibujar
-    ctx.fillStyle = 'blue';
+  //-- Pintando el proyectil
+  ctx.beginPath();
 
-    //-- Rellenar
-    ctx.fill();
+  //-- Definir un rectángulo de dimensiones lx x ly,
+  ctx.rect(x, y, lx, ly);
 
-    //-- Dibujar el trazo
-    ctx.stroke()
+  //-- Color de relleno del rectángulo
+  ctx.fillStyle = color;
+
+  //-- Mostrar el relleno
+  ctx.fill();
+
+  //-- Mostrar el trazo del rectángulo
+  ctx.stroke();
+
   ctx.closePath();
+}
+//-- función para pintar el objetivo
+function dibujarO(xo,yo,lx,ly,color) {
+
+  //-- Pintando el proyectil
+  ctx.beginPath();
+
+  //-- Definir un rectángulo de dimensiones lx x ly,
+  ctx.rect(xo, yo, lx, ly);
+
+  //-- Color de relleno del rectángulo
+  ctx.fillStyle = color;
+
+  //-- Mostrar el relleno
+  ctx.fill();
+
+  //-- Mostrar el trazo del rectángulo
+  ctx.stroke();
+
+  ctx.closePath();
+}
+
+// Pintar lo inicial 
+dibujarP(x,y,lx,ly,"red");
+dibujarO(xo,yo,lx,ly,"blue");
+
+let t = 0; //tiempo inicial
 
 //-- Función principal de animación
 function update() 
@@ -64,25 +100,16 @@ function update()
   console.log("update");
   //-- Algoritmo de animación:
    //-- 1) Actualizar posición de los elementos
-   x = x + velx
+   x = x + (velx * Math.cos(alfa) * t)
+   y = y + (velx * Math.sin(alfa) * t)-(0.5*g*t^2)
+   t = t + 0.1
 
   //-- 2) Borrar el canvas
    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   //-- 3) Dibujar los elementos visibles
-  ctx.beginPath();
-    ctx.rect(x, y, 20, 20);
-    ctx.rect(xo,yo,20, 20);
-
-    //-- Dibujar
-    ctx.fillStyle = 'red';
-
-    //-- Rellenar
-    ctx.fill();
-
-    //-- Dibujar el trazo
-    ctx.stroke()
-  ctx.closePath();
+  dibujarP(x,y,lx,ly,"red");
+  dibujarO(xo,yo,lx,ly,"blue");
 
   //-- 4) Volver a ejecutar update cuando toque
   requestAnimationFrame(update);
