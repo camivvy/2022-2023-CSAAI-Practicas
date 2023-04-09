@@ -37,7 +37,7 @@ let lx = 20;
 let ly = 20;
 
 //-- Velocidad del objeto a lanzar
-let velx = velocidad.value;
+let vel = velocidad.value;
 //-- Angulo del objeto a lanzar
 let alfa = angulo.value;
 // gravedad
@@ -87,21 +87,39 @@ function dibujarO(xo,yo,lx,ly,color) {
 
   ctx.closePath();
 }
+//funcion acierto o fallo
+function revisar(){
+  if (((xo+10) > x > (xo-10))&&((yo+10) > y > (yo-10))){
+    ctx.strokeStyle = 'green';
+    ctx.font = "35px Arial";
+    ctx.strokeText("ACIERTO :) ", 5, 80);
+  } else {
+    ctx.strokeStyle = 'red';
+    ctx.font = "35px Arial";
+    ctx.strokeText("FALLO :( ", 5, 80);
+  }
+}
 
 // Pintar lo inicial 
 dibujarP(x,y,lx,ly,"red");
 dibujarO(xo,yo,lx,ly,"blue");
 
 let t = 0; //tiempo inicial
-
+let velx = 0;
+let vely = 0;
 //-- Función principal de animación
 function update() 
 {
   console.log("update");
   //-- Algoritmo de animación:
    //-- 1) Actualizar posición de los elementos
-   x = x + (velx * Math.cos(alfa) * t)
-   y = y + (velx * Math.sin(alfa) * t)-(0.5*g*t^2)
+    velx = vel * Math.cos((alfa*Math.PI)/180);
+    vely = vel * Math.sin((alfa*Math.PI)/180);
+    x = x + velx*t;
+    y = y + vely*t-0.5*g*t*t;
+
+   // x = x + (vel * Math.cos(alfa) * t)
+   // y = y + (vel * Math.sin(alfa) * t)-(0.5*g*(t^2))
    t = t + 0.1
 
   //-- 2) Borrar el canvas
@@ -113,6 +131,7 @@ function update()
 
   //-- 4) Volver a ejecutar update cuando toque
   requestAnimationFrame(update);
+  revisar();
 }
 
 //-- Acceder al botón de disparo
