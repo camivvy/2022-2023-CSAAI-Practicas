@@ -115,13 +115,13 @@ function update()
    //-- 1) Actualizar posición de los elementos
    console.log(alfa)
    console.log(vel)
-    velx = vel * Math.cos((alfa*Math.PI)/180);
-    vely = vel * Math.sin((alfa*Math.PI)/180);
-    x = x + velx*t ;
-    y = y + vely*t-0.5*g*t*t;
+     velx = vel * Math.cos((alfa*Math.PI)/180);
+     vely = vel * Math.sin((alfa*Math.PI)/180);
+     x = x + velx*t ;
+     y = -(y + vely*t-0.5*g*t*t);
 
-   // x = x + (vel * Math.cos(alfa) * t)
-   // y = y + (vel * Math.sin(alfa) * t)-(0.5*g*(t^2))
+   //x = x + (vel * Math.cos(alfa) * t)
+  //y = y + (vel * Math.sin(alfa) * t)-(0.5*g*(t^2))
    t = t + 0.1
 
   //-- 2) Borrar el canvas
