@@ -37,9 +37,9 @@ let lx = 20;
 let ly = 20;
 
 //-- Velocidad del objeto a lanzar
-let vel = velocidad.value;
+let vel = 0;
 //-- Angulo del objeto a lanzar
-let alfa = angulo.value;
+let alfa = 0;
 // gravedad
 let g = 9.8
 
@@ -113,6 +113,8 @@ function update()
   console.log("update");
   //-- Algoritmo de animación:
    //-- 1) Actualizar posición de los elementos
+   console.log(alfa)
+   console.log(vel)
     velx = vel * Math.cos((alfa*Math.PI)/180);
     vely = vel * Math.sin((alfa*Math.PI)/180);
     x = x + velx*t ;
@@ -141,6 +143,8 @@ btnLanzar.onclick = () => {
   update();
   console.log("Lanzar!!");
   crono.start();
+  vel = velocidad.value;
+  alfa = angulo.value;
 }
 //-- Acceder al botón de inicio
 const btnIniciar = document.getElementById("btnIniciar");
