@@ -115,7 +115,7 @@ function update()
    //-- 1) Actualizar posición de los elementos
     velx = vel * Math.cos((alfa*Math.PI)/180);
     vely = vel * Math.sin((alfa*Math.PI)/180);
-    x = x + velx*t;
+    x = x + velx*t ;
     y = y + vely*t-0.5*g*t*t;
 
    // x = x + (vel * Math.cos(alfa) * t)
