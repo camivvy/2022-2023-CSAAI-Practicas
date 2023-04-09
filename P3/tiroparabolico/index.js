@@ -41,7 +41,7 @@ let vel = 0;
 //-- Angulo del objeto a lanzar
 let alfa = 0;
 // gravedad
-let g = 9.8
+let g = -9.8
 
 //Posicion del objetivo
 let xo = 600;
