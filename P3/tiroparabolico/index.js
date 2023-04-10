@@ -87,9 +87,19 @@ function dibujarO(xo,yo,lx,ly,color) {
 
   ctx.closePath();
 }
+//funcion toca el suelo
+function suelo(){
+  if ((y < 0 || y >= (canvas.height - 20))||(x < 0 || x >= (canvas.width - 20) )){
+    revisar();
+    vel = 0;
+    alfa = 0;
+    crono.stop();
+    
+  }
+}
 //funcion acierto o fallo
 function revisar(){
-  if (((xo+10) > x > (xo-10))&&((yo+10) > y > (yo-10))){
+  if ((((xo + 20) > x ) && ((xo - 20) < x ))&&(((yo + 20) > y ) && ((yo - 20) < y ))){
     ctx.strokeStyle = 'green';
     ctx.font = "35px Arial";
     ctx.strokeText("ACIERTO :) ", 5, 80);
@@ -117,11 +127,9 @@ function update()
    console.log(vel)
      velx = vel * Math.cos((alfa*Math.PI)/180);
      vely = vel * Math.sin((alfa*Math.PI)/180);
-     x = x + velx*t ;
-     y = -(y + vely*t-0.5*g*t*t);
+     x = 5 + velx*t ;
+     y = (345 - vely*t-0.5*g*(t**2));
 
-   //x = x + (vel * Math.cos(alfa) * t)
-  //y = y + (vel * Math.sin(alfa) * t)-(0.5*g*(t^2))
    t = t + 0.1
 
   //-- 2) Borrar el canvas
@@ -133,7 +141,7 @@ function update()
 
   //-- 4) Volver a ejecutar update cuando toque
   requestAnimationFrame(update);
-  revisar();
+  suelo();
 }
 
 //-- Acceder al botón de disparo
