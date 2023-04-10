@@ -101,15 +101,15 @@ function update()
   console.log("update");
   //si toca el objetivo dentro d un rango o si se sale del canvas
     if ((((xo + 15) > x ) && ((xo - 15) < x ))&&(((yo + 15) > y ) && ((yo - 15) < y ))){
-      ctx.strokeStyle = 'green';
+      ctx.strokeStyle = 'white';
       ctx.font = "35px Arial";
-      ctx.strokeText("ACIERTO :) ", 5, 80);
+      ctx.strokeText("ACIERTO :) ", 250, 150);
       crono.stop();
       return
     } else if ((y < 0 || y >= (canvas.height - 20))||(x < 0 || x >= (canvas.width - 20) )) {
       ctx.strokeStyle = 'red';
       ctx.font = "35px Arial";
-      ctx.strokeText("FALLO :( ", 5, 80);
+      ctx.strokeText("FALLO :( ", 250, 150);
       crono.stop();
       return
     } 
