@@ -104,6 +104,7 @@ function update()
       ctx.strokeStyle = 'green';
       ctx.font = "35px Arial";
       ctx.strokeText("ACIERTO :) ", 5, 80);
+      crono.stop();
       return
     } else if ((y < 0 || y >= (canvas.height - 20))||(x < 0 || x >= (canvas.width - 20) )) {
       ctx.strokeStyle = 'red';
