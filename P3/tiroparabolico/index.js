@@ -21,6 +21,9 @@ velocidad.oninput = () => {
 }
 
 const canvas = document.getElementById("canvas");
+var papel = document.getElementById("papel");
+var trashcan = document.getElementById("trashcan");
+
 //-- Definir el tamaño del canvas
 canvas.width = 700;
 canvas.height = 370;
@@ -101,15 +104,15 @@ function update()
   console.log("update");
   //si toca el objetivo dentro d un rango o si se sale del canvas
     if ((((xo + 15) > x ) && ((xo - 15) < x ))&&(((yo + 15) > y ) && ((yo - 15) < y ))){
-      ctx.strokeStyle = 'white';
+      ctx.strokeStyle = 'green';
       ctx.font = "35px Arial";
-      ctx.strokeText("ACIERTO :) ", 250, 150);
+      ctx.strokeText("ACIERTO :) ", 210, 95);
       crono.stop();
       return
     } else if ((y < 0 || y >= (canvas.height - 20))||(x < 0 || x >= (canvas.width - 20) )) {
       ctx.strokeStyle = 'red';
       ctx.font = "35px Arial";
-      ctx.strokeText("FALLO :( ", 250, 150);
+      ctx.strokeText("FALLO :( ", 210, 95);
       crono.stop();
       return
     } 
