@@ -90,11 +90,17 @@ function dibujarO(xo,yo,lx,ly,color) {
 //funcion toca el suelo
 function suelo(){
   if ((y < 0 || y >= (canvas.height - 20))||(x < 0 || x >= (canvas.width - 20) )){
-    revisar();
-    vel = 0;
-    alfa = 0;
+    if ((((xo + 20) > x ) && ((xo - 20) < x ))&&(((yo + 20) > y ) && ((yo - 20) < y ))){
+      ctx.strokeStyle = 'green';
+      ctx.font = "35px Arial";
+      ctx.strokeText("ACIERTO :) ", 5, 80);
+      return
+    } else {
+      ctx.strokeStyle = 'red';
+      ctx.font = "35px Arial";
+      ctx.strokeText("FALLO :( ", 5, 80);
+    }
     crono.stop();
-    
   }
 }
 //funcion acierto o fallo
@@ -103,6 +109,7 @@ function revisar(){
     ctx.strokeStyle = 'green';
     ctx.font = "35px Arial";
     ctx.strokeText("ACIERTO :) ", 5, 80);
+    return
   } else {
     ctx.strokeStyle = 'red';
     ctx.font = "35px Arial";
@@ -122,6 +129,18 @@ function update()
 {
   console.log("update");
   //-- Algoritmo de animación:
+    if ((((xo + 20) > x ) && ((xo - 20) < x ))&&(((yo + 20) > y ) && ((yo - 20) < y ))){
+      ctx.strokeStyle = 'green';
+      ctx.font = "35px Arial";
+      ctx.strokeText("ACIERTO :) ", 5, 80);
+      return
+    } else if ((y < 0 || y >= (canvas.height - 20))||(x < 0 || x >= (canvas.width - 20) )) {
+      ctx.strokeStyle = 'red';
+      ctx.font = "35px Arial";
+      ctx.strokeText("FALLO :( ", 5, 80);
+      crono.stop();
+      return
+    } 
    //-- 1) Actualizar posición de los elementos
    console.log(alfa)
    console.log(vel)
@@ -141,7 +160,7 @@ function update()
 
   //-- 4) Volver a ejecutar update cuando toque
   requestAnimationFrame(update);
-  suelo();
+  
 }
 
 //-- Acceder al botón de disparo
