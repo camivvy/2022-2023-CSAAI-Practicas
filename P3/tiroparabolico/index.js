@@ -87,35 +87,6 @@ function dibujarO(xo,yo,lx,ly,color) {
 
   ctx.closePath();
 }
-//funcion toca el suelo
-function suelo(){
-  if ((y < 0 || y >= (canvas.height - 20))||(x < 0 || x >= (canvas.width - 20) )){
-    if ((((xo + 20) > x ) && ((xo - 20) < x ))&&(((yo + 20) > y ) && ((yo - 20) < y ))){
-      ctx.strokeStyle = 'green';
-      ctx.font = "35px Arial";
-      ctx.strokeText("ACIERTO :) ", 5, 80);
-      return
-    } else {
-      ctx.strokeStyle = 'red';
-      ctx.font = "35px Arial";
-      ctx.strokeText("FALLO :( ", 5, 80);
-    }
-    crono.stop();
-  }
-}
-//funcion acierto o fallo
-function revisar(){
-  if ((((xo + 20) > x ) && ((xo - 20) < x ))&&(((yo + 20) > y ) && ((yo - 20) < y ))){
-    ctx.strokeStyle = 'green';
-    ctx.font = "35px Arial";
-    ctx.strokeText("ACIERTO :) ", 5, 80);
-    return
-  } else {
-    ctx.strokeStyle = 'red';
-    ctx.font = "35px Arial";
-    ctx.strokeText("FALLO :( ", 5, 80);
-  }
-}
 
 // Pintar lo inicial 
 dibujarP(x,y,lx,ly,"red");
@@ -128,8 +99,8 @@ let vely = 0;
 function update() 
 {
   console.log("update");
-  //-- Algoritmo de animación:
-    if ((((xo + 20) > x ) && ((xo - 20) < x ))&&(((yo + 20) > y ) && ((yo - 20) < y ))){
+  //si toca el objetivo dentro d un rango o si se sale del canvas
+    if ((((xo + 15) > x ) && ((xo - 15) < x ))&&(((yo + 15) > y ) && ((yo - 15) < y ))){
       ctx.strokeStyle = 'green';
       ctx.font = "35px Arial";
       ctx.strokeText("ACIERTO :) ", 5, 80);
@@ -142,8 +113,6 @@ function update()
       return
     } 
    //-- 1) Actualizar posición de los elementos
-   console.log(alfa)
-   console.log(vel)
      velx = vel * Math.cos((alfa*Math.PI)/180);
      vely = vel * Math.sin((alfa*Math.PI)/180);
      x = 5 + velx*t ;
