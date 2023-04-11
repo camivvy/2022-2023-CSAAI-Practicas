@@ -8,6 +8,14 @@
     font-size: 80px;
 }
 
+body {
+    background-color:rgb(255, 131, 94); 
+    color: black;
+     background: no-repeat; 
+     background-image: url(fondoray.jpg); /* la imagen de fondo */
+    background-size: cover;
+  }
+
 .game {
     position: absolute;
     top: 50%;
