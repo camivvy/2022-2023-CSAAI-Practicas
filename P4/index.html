@@ -7,163 +7,34 @@
         <title> Memory That 70s Show </title>
 
         <link rel="stylesheet" href="index.css" />
-        <script src="crono.js" defer></script>
+        <!--<script src="crono.js" defer></script>-->
         <script src="index.js" defer></script>
     <body>
-        <div class="game">
+        <div class="game" ALIGN="center">
             <h2 id="texto" ALIGN="center"> That 70s Show </h2>
             <h3 ALIGN="center" > ¡Encuentra la pareja! </h3>
-            <p>
-                Elige las dimensiones del juego:
-                <input type="text" id ="text3" list="items" placeholder="Con valores predefinidos...."/>
-                <span id="text3_disp"></span>
-                    <!-- Lista de opciones -->
-                    <datalist id="items">
-                        <option value="2">2</option>
-                        <option value="4">4</option>
-                        <option value="6">6</option>
-                    </datalist>
-            </p>
-            <p>
-                Elige las dimensiones del juego:
-                2 <input type="radio" name="grupo1" value=2 id="2" checked>
-                4 <input type="radio" name="grupo1" value=4 id="4">
-                6 <input type="radio" name="grupo1" value=6 id="6">
-                
-            </p>
-            <p id="radio_display"></p>
-
+            <div class="dimensions">
+                <p> Antes de comenzar el juego elegir dimensiones</p>
+                <select id="dimensiones">
+                    <option value="0" selected>ELEGIR DIMENSIONES</option>
+                    <option value="2">2x2</option>
+                    <option value="4">4x4</option>
+                    <option value="6">6x6</option>
+                </select>
+            </div><br>
+            
             <div class="controles">
-                <button>Comenzar</button>
-                <button>Reiniciar</button>
+                <button id="btnComenzar">Comenzar</button>
+                <button id="btnReiniciar">Reiniciar</button>
                 <div class="display">
                     <div class="movimientos">0 movimientos</div>
                     <div class="timer">tiempo: 0 sec</div>
                 </div>
             </div>
             <div class="grid-container">
-                <div class="tablero" grid-dimension="6"></div>
+                <div class="tablero" grid-dimension="4"></div>
                 <div class="win">¡Has Ganado!</div>
-            </div>
-
-             <!-- 
-            <div class="card">
-                <div class="card-front"> </div>
-                <div class="card-back">  <img src="donna.jpg"> </div>
-            </div>
-            <div class="card">
-                <div class="card-front"> </div>
-                <div class="card-back">  <img src="eric.jpg"> </div>
-            </div>
-        -->
-            <!-- 
-            <table class="default">
-            <tr>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="card">
-                    <div class="card-front"> 70s</div>
-                    <div class="card-back"> imagen </div>
-                    </div>
-                </td>
-            </tr>    
-            </table> -->
-            
+            </div>    
             </div>
         </div>
         

@@ -8,30 +8,9 @@ const selectors = {
     win: document.querySelector('.win')
 }
 
-//text 3 las opciones de dimensiones 
-const text3 = document.getElementById("text3");
-const text3_disp = document.getElementById("text3_disp");
-text3.onchange = () => {
-    text3_disp.innerHTML = text3.value; 
-}
-const r1 = document.getElementById("2");
-const r2 = document.getElementById("4");
-const r3 = document.getElementById("6");
-const r_disp = document.getElementById("radio_display");
-
-r1.onchange = () => {
-    r_disp.innerHTML = "2";   
-}
-
-r2.onchange = () => {
-    r_disp.innerHTML = "4";   
-}
-
-r3.onchange = () => {
-    r_disp.innerHTML = "6";   
-}
-
-
+//dimension del tablero
+let dimensiones = document.getElementById("dimensiones");
+let dimension;
 const state = {
     gameStarted: false,
     flippedCards: 0,
@@ -40,9 +19,22 @@ const state = {
     loop: null
 }
  
+// retroalimentacion botones
+const btnComenzar = document.getElementById("btnComenzar");
+btnComenzar.onclick = () => {
+    console.log("Comenzar");
+    startGame();
+  }
+
+const btnReiniciar = document.getElementById("btnReiniciar");
+btnReiniciar.onclick = () => { //intentar confuncion y llamarla aparte
+console.log("Reiniciar");
+    location.reload();
+} 
 
 const generateGame = () => {
-    const dimensions = selectors.tablero.getAttribute('grid-dimension')
+    let valorSeleccionado = parseInt(dimensiones.value);
+    let dimensions = valorSeleccionado;
 
     //-- Nos aseguramos de que el número de dimensiones es par
     // y si es impar lanzamos un error
@@ -255,42 +247,3 @@ const flipBackCards = () => {
 
 
 
-// cosas mias...
-/* let personajes = [];
-function cargarImagenes(){
-    personajes[0] = "donna.jpg";
-    personajes[1] = "eric.jpg";
-    personajes[2] = "fez.jpg";
-    personajes[3] = "hyde.png";
-    personajes[4] = "jackie.jpg";
-    personajes[5] = "kelso.jpg";
-    personajes[6] = "kitty.jpg";
-    personajes[7] = "leo.jpg";
-}
-const numImg = 8;
-function imagenes() {
-	let imagenes = [];
-	let i = 0;
-	while (i < 8) {
-		let nuevaImagen = random.personajes; //Esto acaso se puede?
-		if (!imagenes.includes(nuevaImagen)) {
-			imagenes[i] = nuevaImagen;
-			i++;
-		}
-	}
-	return mezclarImagenes(imagenes, numImg);
-}
-function mezclarImagenes(imagenes, numImg) {
-	let baraja = [];
-	baraja.length = numImg * 2;
-
-	let i = 0
-	while (i < baraja.length) {
-		let nuevaImagen = imagenes[getAleatorio(imagenes)];
-		if (!baraja.includes(nuevaImagen) || contarRepeticiones(baraja, nuevaImagen) < 2) {
-			baraja[i] = nuevaImagen;
-			i++;
-		}
-	}
-	return baraja;
-} */
