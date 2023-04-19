@@ -215,7 +215,7 @@ const flipCard = card => {
         }, 1000)
     }
 
-    // Antes de terminar, comprobamos si quedan cartas por girar
+    // Antes de terminar, comprobamos si quedan cartas por gira
     // porque cuando no quedan cartas por girar hemos ganado
     // y se lo tenemos que mostrar al jugador
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
