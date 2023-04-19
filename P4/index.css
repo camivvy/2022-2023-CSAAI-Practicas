@@ -139,21 +139,3 @@ button {
 .highlight {
     color: #6f00fc;
 }
-.iresponsive {
-    padding: 0 6px;
-    float: left;
-    width: 50%;
-  }
-
-/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
-/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
-
-@media screen and (max-width: 600px) {
-    .body {
-      width: 100%;
-    }
-
-    .iresponsive {
-        width: 100%;
-    }
-}
