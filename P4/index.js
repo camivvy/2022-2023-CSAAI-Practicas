@@ -11,6 +11,7 @@ const selectors = {
 //dimension del tablero
 let dimensiones = document.getElementById("dimensiones");
 let dimension;
+
 const state = {
     gameStarted: false,
     flippedCards: 0,
@@ -23,18 +24,19 @@ const state = {
 const btnComenzar = document.getElementById("btnComenzar");
 btnComenzar.onclick = () => {
     console.log("Comenzar");
+    generateGame();
     startGame();
   }
 
 const btnReiniciar = document.getElementById("btnReiniciar");
-btnReiniciar.onclick = () => { //intentar confuncion y llamarla aparte
+btnReiniciar.onclick = () => { 
 console.log("Reiniciar");
     location.reload();
 } 
 
 const generateGame = () => {
-    let valorSeleccionado = parseInt(dimensiones.value);
-    let dimensions = valorSeleccionado;
+    let dimSeleccionada = parseInt(dimensiones.value);
+    let dimensions = dimSeleccionada;
 
     //-- Nos aseguramos de que el número de dimensiones es par
     // y si es impar lanzamos un error
@@ -42,36 +44,34 @@ const generateGame = () => {
         throw new Error("Las dimensiones del tablero deben ser un número par.")
     }
 
-    //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-   
-    
-    let emojis = []; //array donde van los personajes
+    //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego 
+    let personajes = []; //array donde van los personajes
     function cargarImagenes(){
-    emojis[0] = "donna.jpg";
-    emojis[1] = "eric.jpg";
-    emojis[2] = "fez.jpg";
-    emojis[3] = "hyde.png";
-    emojis[4] = "jackie.jpg";
-    emojis[5] = "kelso.jpg";
-    emojis[6] = "kitty.jpg";
-    emojis[7] = "Leo.webp";
-    emojis[8] = "red.webp";
-    emojis[9] = "logo.png";
-    emojis[10] = "bob.JPEG";
-    emojis[11] = "laurie.jpg";
-    emojis[12] ="tanyaroberts.jpg";
-    emojis[13] = "Fenton.webp";
-    emojis[14] = "corvette.jpg";
-    emojis[15] = "skating.jpg";
-    emojis[16] = "milaashton.jpg";
-    emojis[17] = "donnaeric.jpg"
+    personajes[0] = "donna.jpg";
+    personajes[1] = "eric.jpg";
+    personajes[2] = "fez.jpg";
+    personajes[3] = "hyde.png";
+    personajes[4] = "jackie.jpg";
+    personajes[5] = "kelso.jpg";
+    personajes[6] = "kitty.jpg";
+    personajes[7] = "Leo.webp";
+    personajes[8] = "red.webp";
+    personajes[9] = "logo.png";
+    personajes[10] = "bob.JPEG";
+    personajes[11] = "laurie.jpg";
+    personajes[12] ="tanyaroberts.jpg";
+    personajes[13] = "Fenton.webp";
+    personajes[14] = "corvette.jpg";
+    personajes[15] = "skating.jpg";
+    personajes[16] = "milaashton.jpg";
+    personajes[17] = "donnaeric.jpg"
     }
     cargarImagenes();
     //-- Elegimos un subconjunto de emojis al azar, así cada vez que comienza el juego
     // es diferente.
     // Es decir, si tenemos un array con 10 emojis, vamos a elegir el cuadrado de las
     // dimensiones entre dos, para asegurarnos de que cubrimos todas las cartas
-    const picks = pickRandom(emojis, (dimensions * dimensions) / 2) 
+    const picks = pickRandom(personajes, (dimensions * dimensions) / 2) 
 
     //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
     // están desordenadas.
@@ -155,7 +155,7 @@ const attachEventListeners = () => {
 }
 
 // Generamos el juego
-generateGame()
+//generateGame()
 
 // Asignamos las funciones de callback para determinados eventos
 attachEventListeners()
