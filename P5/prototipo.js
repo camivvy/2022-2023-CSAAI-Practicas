@@ -4,7 +4,10 @@ const gui = {
   bsend : document.getElementById("bsend"),
   netdelay : document.getElementById("netdelay"),
   netdelayvalue : document.getElementById("netdelay_value"),
-}
+  nodedelay : document.getElementById("nodedelay"),
+  nodedelayvalue : document.getElementById("nodedelay_value"),
+  nodos: document.getElementById("nodos"),
+  nodosvalue: document.getElementById("nodos_value") }
 
 //-- Obtener elementos del DOM
 const canvas = document.getElementById('canvas');
@@ -21,12 +24,14 @@ const state = {
   sendingPackage:0,
   netDelay: 1,
   netDelayDefault: 1,
+  nodos : 3,
+  retardo : 1,
   loop: null
 }
 
 //-- Iniciar el valor del deslizador con el valor de la 
 // variable de estado para el delay
-gui.netdelayvalue.innerHTML = state.netDelay;
+gui.nodedelayvalue.innerHTML = state.retardo;
 
 //-- Cuando está disponible cargo la imagen con la nube para represntar el destino
 imgCloud.onload = function () {
@@ -49,15 +54,21 @@ gui.bsend.onclick = () => {
 
 //-- función de callback para actualizar los valores del 
 // deslizador y la variable de estado para el delay
-gui.netdelay.oninput = () => {
-  gui.netdelayvalue.innerHTML = gui.netdelay.value;
-  state.netDelay = gui.netdelay.value;
+
+gui.nodedelay.oninput = () => {
+  gui.nodedelayvalue.innerHTML = gui.nodedelay.value;
+  state.retardo = gui.nodedelay.value;
+}
+gui.nodos.oninput = () => {
+  gui.nodosvalue.innerHTML = gui.nodos.value;
+  state.nodos = gui.nodos.value;
 }
 
 //-- simulación del envío de la imagen
 //-- la he planteado como que cada línea horizontal de la imagen
 //-- es un paquete de datos, que sufrirá el retardo correspondiente.
 //-- https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData
+
 const sendImage = () => {
 
   console.log("Comienzo a enviar...");
@@ -65,7 +76,7 @@ const sendImage = () => {
   //-- Se establece como tamaño del canvas el mismo
   //-- que el de la imagen original
   canvas.width = imgFront.width;
-  canvas.height = imgFront.height;  
+  canvas.height = imgFront.width;  
  
   //-- Situar la imagen original en el canvas
   //-- No se han hecho manipulaciones todavía
@@ -102,7 +113,8 @@ const sendImage = () => {
 
     //-- cambiamos el canal a rojo del rectángulo que hemos seleccionado
     for (let i = 0; i < data.length; i+=4) {
-      data[i] = 0; //-- Canal rojo a 0
+      data[i] = 0; //-- Canal rojo a 0 
+    
     }
     
     //-- dimensiones del rectángulo 2
@@ -142,7 +154,7 @@ const sendImage = () => {
     }
 
     console.log("Enviando...");
-  }, state.netDelay )
+  },  state.nodos*state.retardo )
 }
 
 console.log("Red preparada...");
