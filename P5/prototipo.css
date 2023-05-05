@@ -4,6 +4,8 @@ body {
 
 #cloud {
   display: none;
+  width: 400px; ;
+  height: 179px;
 }
 
 #imagesrchide {
